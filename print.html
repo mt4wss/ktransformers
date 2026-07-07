@@ -16,8 +16,8 @@
         <link rel="icon" href="favicon-de23e50b.svg">
         <link rel="shortcut icon" href="favicon-8114d1fc.png">
         <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
         <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-e5f9a78d.js";
+            window.path_to_searchindex_js = "searchindex-6a9ea63d.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-c2917af9.js"></script>
@@ -197,6 +197,8 @@
 <p>KTransformers is a research project focused on efficient inference and fine-tuning of large language models through CPU-GPU heterogeneous computing. The project now exposes two user-facing capabilities from the kt-kernel source tree: <a href="kt-kernel/README.html">Inference</a> and <a href="doc/en/SFT/KTransformers-Fine-Tuning_Quick-Start.html">SFT</a>.</p>
 <h2 id="-updates"><a class="header" href="#-updates">🔥 Updates</a></h2>
 <ul>
+<li><strong>June 21, 2026</strong>: MiniMax-M3 Day0 Support! (<a href="doc/en/kt-kernel/MiniMax-M3-Tutorial.html">Tutorial</a>)</li>
+<li><strong>June 17, 2026</strong>: GLM-5.2 Day0 Support! (<a href="doc/en/kt-kernel/GLM-5.2-Tutorial.html">Tutorial</a>)</li>
 <li><strong>May 6, 2026</strong>: KTransformers at <a href="https://paris2026.gosim.org/zh/schedule/">GOSIM Paris 2026</a> — “Agentic AI on Edge” track. We’ll present KT’s inference performance on consumer hardware.</li>
 <li><strong>May 02, 2026</strong>: DeepSeek-V4-Flash Support! (<a href="doc/en/DeepSeek-V4-Flash.html">Tutorial</a>)</li>
 <li><strong>Apr 30, 2026</strong>: KTransformers v0.6.1 refreshes kt-kernel inference and SFT docs with separate <a href="kt-kernel/README.html">Inference</a> and <a href="doc/en/SFT/KTransformers-Fine-Tuning_Quick-Start.html">SFT Quick Start</a> entry points.</li>
@@ -269,7 +271,7 @@ pip install .
 <hr>
 <h3 id="-sft---fine-tuning-with-llama-factory"><a class="header" href="#-sft---fine-tuning-with-llama-factory">🎓 <a href="doc/en/SFT/KTransformers-Fine-Tuning_Quick-Start.html">SFT</a> - Fine-Tuning with LLaMA-Factory</a></h3>
 <p>KTransformers × LLaMA-Factory integration for ultra-large MoE model fine-tuning.</p>
-<p><img src="https://raw.githubusercontent.com/kvcache-ai/ktransformers/main/doc/assets/image-20251011010558909.png" alt="KTransformers SFT"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="https://raw.githubusercontent.com/kvcache-ai/ktransformers/main/doc/assets/image-20251011010558909.png" alt="KTransformers SFT"><span class="img-wrapper"><img src="https://raw.githubusercontent.com/kvcache-ai/ktransformers/main/doc/assets/image-20251011010558909.png" alt="KTransformers SFT"></span></label></p>
 <p><strong>Key Features:</strong></p>
 <ul>
 <li><strong>Multi-Backend Support</strong>: CPU/GPU hybrid fine-tuning with INT8/INT4 quantization</li>
@@ -1094,7 +1096,7 @@ rm -rf build
 <p>From <strong>DeepSeek-V3/R1</strong> to <strong>Qwen3-MoE</strong> and <strong>Kimi-K2</strong>, each wave of open-sourced large models brings leaps in performance and scale. However, many researchers and developers are constrained by expensive GPUs and models with tens or even hundreds of billions of parameters, making it <strong>hard to fine-tune very large models under limited resources</strong>. To bridge this gap, we propose a practical approach: combining <strong>KTransformers</strong> with <strong>LLaMA-Factory</strong>. With just <strong>2–4 RTX 4090s</strong> and a high-memory CPU, you can fine-tune ultra-large MoE models like DeepSeek-671B.</p>
 <p>Our goal is to give resource-constrained researchers a <strong>local path to explore fine-tuning ultra-large models</strong>, and also a fast way to customize smaller models (e.g., 14B/30B) for specific scenarios. We validate the setup using <strong>stylized dialogue</strong>, <strong>Westernized translation tone</strong>, and <strong>medical Q&amp;A</strong> as representative tasks, showing that <strong>personalized adaptation can be achieved within hours</strong>.</p>
 <p>As shown below, LLaMA-Factory is the unified orchestration/configuration layer for the whole fine-tuning workflow—handling data, training scheduling, LoRA injection, and inference interfaces. <strong>KTransformers</strong> acts as a pluggable high-performance backend that takes over core operators like Attention/MoE under the same training configs, enabling efficient <strong>GPU+CPU heterogeneous cooperation</strong>.</p>
-<p><img src="assets/image-20251011010558909.png" alt="image-20251011010558909"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20251011010558909.png" alt="image-20251011010558909"><span class="img-wrapper"><img src="assets/image-20251011010558909.png" alt="image-20251011010558909"></span></label></p>
 <p>Within LLaMA-Factory, we compared LoRA fine-tuning with <strong>HuggingFace</strong>, <strong>Unsloth</strong>, and <strong>KTransformers</strong> backends. KTransformers is the <strong>only workable 4090-class solution</strong> for ultra-large MoE models (e.g., 671B) and also delivers higher throughput and lower GPU memory on smaller MoE models (e.g., DeepSeek-14B).</p>
 <div class="table-wrapper">
 <table>
@@ -1110,12 +1112,12 @@ rm -rf build
 </table>
 </div>
 <p>† <strong>1400 GB</strong> is a <strong>theoretical</strong> FP16 full-parameter resident footprint (not runnable). <strong>70 GB</strong> is the <strong>measured peak</strong> with KT strategy (Attention on GPU + layered MoE offload).</p>
-<p><img src="assets/image-compare_model.png" alt="按照模型划分的对比图_02"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-compare_model.png" alt="按照模型划分的对比图_02"><span class="img-wrapper"><img src="assets/image-compare_model.png" alt="按照模型划分的对比图_02"></span></label></p>
 <h3 id="fine-tuning-results-examples"><a class="header" href="#fine-tuning-results-examples">Fine-Tuning Results (Examples)</a></h3>
 <h4 id="stylized-dialogue-catgirl-tone"><a class="header" href="#stylized-dialogue-catgirl-tone">Stylized Dialogue (CatGirl tone)</a></h4>
 <p>Dataset: <a href="https://zhuanlan.zhihu.com/p/1934983798233231689">NekoQA-10K</a>. Goal: improve style consistency and recognizability.</p>
 <p>The figure compares responses from the base vs. fine-tuned models. The fine-tuned model maintains the target tone and address terms more consistently (red boxes), validating the effectiveness of <strong>style-transfer fine-tuning</strong>.</p>
-<p><img src="assets/image-20251016175046882.png" alt="image-20251016175046882"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20251016175046882.png" alt="image-20251016175046882"><span class="img-wrapper"><img src="assets/image-20251016175046882.png" alt="image-20251016175046882"></span></label></p>
 <h4 id="benchmarks"><a class="header" href="#benchmarks">Benchmarks</a></h4>
 <p>We use:</p>
 <p>(1) <a href="https://github.com/Benson114/Translational-Style-ChatLLM">Translational-Style-ChatLLM</a>, which asks for an exaggerated, Westernized translation tone—clear, stylized customization.</p>
@@ -1276,7 +1278,7 @@ chunk_size: 8192
       backend: "AMXInt8" # or "AMXBF16" or "llamafile" (default)
 </code></pre>
 <p>Outputs go to <code>output_dir</code> in safetensors format plus adapter metadata for later loading.</p>
-<p><img src="assets/image-20251016171537997.png" alt="image-20251016171537997"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20251016171537997.png" alt="image-20251016171537997"><span class="img-wrapper"><img src="assets/image-20251016171537997.png" alt="image-20251016171537997"></span></label></p>
 <h3 id="core-feature-2-chat-with-the-fine-tuned-model-base--lora-adapter"><a class="header" href="#core-feature-2-chat-with-the-fine-tuned-model-base--lora-adapter">Core Feature 2: Chat with the fine-tuned model (base + LoRA adapter)</a></h3>
 <p>Run the command: <code>llamafactory-cli chat examples/inference/qwen3_lora_sft.yaml</code>.</p>
 <p>Use the safetensors adapter trained with KT for inference.</p>
@@ -1293,7 +1295,7 @@ chunk_size: 8192
 </code></pre>
 <p>We also support <strong>GGUF</strong> adapters: for safetensors, set the <strong>directory</strong>; for GGUF, set the <strong>file path</strong> in <code>adapter_name_or_path</code>.</p>
 <p>During loading, LLaMA-Factory maps layer names to KT’s naming. You’ll see logs like <code>Loaded adapter weight: XXX -&gt; XXX</code>:</p>
-<p><img src="assets/image-20251016171526210.png" alt="image-20251016171526210"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20251016171526210.png" alt="image-20251016171526210"><span class="img-wrapper"><img src="assets/image-20251016171526210.png" alt="image-20251016171526210"></span></label></p>
 <h3 id="core-feature-3-batch-inference--metrics-base--lora-adapter"><a class="header" href="#core-feature-3-batch-inference--metrics-base--lora-adapter">Core Feature 3: Batch inference + metrics (base + LoRA adapter)</a></h3>
 <p>Run the command: <code>API_PORT=8000 llamafactory-cli api examples/inference/qwen3_lora_sft.yaml</code>.
 Invoke the KT fine-tuned adapter to provide the API; the usage logic of other APIs is consistent with the native LLaMA-Factory approach.</p>
@@ -1334,14 +1336,14 @@ chunk_size: 8192
 <ul>
 <li><a href="en/SFT/KTransformers-Fine-Tuning_Quick-Start.html">v0.6.1 Quick Start</a></li>
 <li><a href="#ktransformers-fine-tuning--llama-factory-integration--user-guide">Fine-Tuning User Guide</a></li>
-<li><a href="#kt-ft-fine-tuning-and-inference-loop">KT-FT Fine-Tuning and Inference Loop</a></li>
+<li><a href="#qwen35-moe-kt-lora-serving-with-sglang-kt">KT-FT Fine-Tuning and Inference Loop</a></li>
 <li><a href="#ktransformers-fine-tuning--llama-factory-integration--developer-technical-notes">Developer Technical Notes</a></li>
 <li><a href="#dpo-training-with-llama-factory">DPO Tutorial</a></li>
 <li><a href="#tutorial-inject-operator-step-by-step">Injection Tutorial</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="kt-ft-fine-tuning-and-inference-loop"><a class="header" href="#kt-ft-fine-tuning-and-inference-loop">KT-FT Fine-Tuning and Inference Loop</a></h1>
-<p>Last updated: 2026-06-01</p>
+<h1 id="qwen35-moe-kt-lora-serving-with-sglang-kt"><a class="header" href="#qwen35-moe-kt-lora-serving-with-sglang-kt">Qwen3.5 MoE KT LoRA Serving with SGLang-KT</a></h1>
+<p>Last updated: 2026-06-23</p>
 <p>This guide documents the current KT-FT loop for Qwen3.5 MoE: train with KT SFT, convert the output once, and serve the fine-tuned result through SGLang with a single merged adapter path.</p>
 <pre><code class="language-text">KT SFT raw output
   -&gt; convert_kt_to_sglang_adapter.py
@@ -1355,9 +1357,11 @@ chunk_size: 8192
 <p>Current supported and validated workflow:</p>
 <ul>
 <li>Base model: Qwen3.5 MoE, for example <code>Qwen3.5-35B-A3B</code></li>
+<li>KTransformers version: v0.6.3 or newer</li>
 <li>KT expert weights: AMX/BF16 SFT-compatible KT CPU expert path</li>
 <li>User-facing serving input: one converted merged adapter directory</li>
 <li>Runtime split: expert LoRA goes to the KT CPU expert path; non-expert LoRA goes to SGLang’s LoRA manager. This split happens automatically at server startup.</li>
+<li>This workflow is for KT MoE expert LoRA artifacts. Standard dense-model PEFT LoRA adapters usually do not need this converter.</li>
 </ul>
 <h2 id="2-artifacts-at-each-stage"><a class="header" href="#2-artifacts-at-each-stage">2. Artifacts At Each Stage</a></h2>
 <h3 id="raw-kt-sft-output"><a class="header" href="#raw-kt-sft-output">Raw KT SFT output</a></h3>
@@ -1384,12 +1388,13 @@ chunk_size: 8192
 </code></pre>
 <p>Example:</p>
 <pre><code class="language-bash">python kt-kernel/scripts/convert_kt_to_sglang_adapter.py \
-  saves/KT_FT_qwen35B_Moe_nekoqa_eod_240 \
-  saves/KT_FT_qwen35B_Moe_nekoqa_eod_240_sglang \
+  saves/KT_FT_qwen35B_Moe_custom \
+  saves/KT_FT_qwen35B_Moe_custom_sglang \
   --base-model-name-or-path /mnt/data3/models/Qwen3.5-35B-A3B \
   --overwrite
 </code></pre>
 <p>The converter reads <code>fused_expert_lora.safetensors</code> and the existing non-expert <code>adapter_model.safetensors</code>, then writes one merged adapter directory.</p>
+<p>If the raw KT SFT output does not contain an <code>adapter_config.json</code> with <code>lora_alpha</code>, pass <code>--lora-alpha &lt;value&gt;</code> explicitly. The converter does not fold LoRA scaling into the tensors; runtime scaling remains <code>lora_alpha / r</code>.</p>
 <p>Optional split outputs for debugging:</p>
 <pre><code class="language-bash">python kt-kernel/scripts/convert_kt_to_sglang_adapter.py \
   &lt;KT_SFT_OUTPUT_DIR&gt; \
@@ -1430,7 +1435,7 @@ python -m sglang.launch_server \
   --disable-custom-all-reduce \
   --enable-lora \
   --lora-backend triton \
-  --lora-paths qwen35b_neko=/path/to/KT_FT_qwen35B_Moe_nekoqa_eod_240_sglang \
+  --lora-paths qwen35b_lora=/path/to/KT_FT_qwen35B_Moe_custom_sglang \
   --log-level info
 </code></pre>
 <p>Important points:</p>
@@ -1446,27 +1451,29 @@ python -m sglang.launch_server \
 <li><code>--kt-num-gpu-experts 0</code></li>
 <li>do not enable <code>--kt-enable-dynamic-expert-update</code></li>
 <li>do not use <code>--kt-gpu-prefill-token-threshold</code></li>
+<li><code>--max-running-requests</code> must be at least 2</li>
 <li>use an AMX/BF16 SFT-compatible KT method such as <code>AMXINT4</code>, <code>AMXINT8</code>, <code>AMXBF16</code>, or <code>BF16</code></li>
 </ul>
 <h2 id="5-request-semantics"><a class="header" href="#5-request-semantics">5. Request Semantics</a></h2>
 <p>The OpenAI-compatible request <code>model</code> field uses names, not paths.</p>
 <pre><code class="language-text">--served-model-name qwen3.5-kt-ft
---lora-paths qwen35b_neko=/path/to/merged_adapter
+--lora-paths qwen35b_lora=/path/to/merged_adapter
 </code></pre>
 <p>Request behavior in the current single-adapter implementation:</p>
 <pre><code class="language-text">model=qwen3.5-kt-ft
 =&gt; base + KT expert LoRA
 
-model=qwen3.5-kt-ft:qwen35b_neko
+model=qwen3.5-kt-ft:qwen35b_lora
 =&gt; base + KT expert LoRA + SGLang non-expert LoRA
 </code></pre>
 <p>The suffix after <code>:</code> must match the left-side name in <code>--lora-paths</code>.</p>
+<p>If you need a true base-only comparison, launch a separate server without <code>--lora-paths</code>.</p>
 <h2 id="6-smoke-test"><a class="header" href="#6-smoke-test">6. Smoke Test</a></h2>
 <pre><code class="language-bash">curl -sS http://127.0.0.1:30006/v1/chat/completions \
   -H 'Content-Type: application/json' \
   -d '{
-    "model": "qwen3.5-kt-ft:qwen35b_neko",
-    "messages": [{"role": "user", "content": "我回来了，你在干嘛？"}],
+    "model": "qwen3.5-kt-ft:qwen35b_lora",
+    "messages": [{"role": "user", "content": "Explain what LoRA is in one sentence."}],
     "temperature": 0.7,
     "max_tokens": 160,
     "chat_template_kwargs": {"enable_thinking": false}
@@ -1486,9 +1493,9 @@ Using triton as backend of LoRA kernels.
 <p>This is not the recommended user-facing path. Normal users should pass one merged adapter directory through <code>--lora-paths</code> only.</p>
 <h2 id="8-troubleshooting"><a class="header" href="#8-troubleshooting">8. Troubleshooting</a></h2>
 <h3 id="got-lora-adapter-that-has-never-been-loaded-lora0"><a class="header" href="#got-lora-adapter-that-has-never-been-loaded-lora0"><code>Got LoRA adapter that has never been loaded: lora0</code></a></h3>
-<p>The adapter name in the request must match the left side of <code>--lora-paths</code>. If you launched with <code>qwen35b_neko=...</code>, request <code>model=qwen3.5-kt-ft:qwen35b_neko</code>, not <code>:lora0</code>.</p>
+<p>The adapter name in the request must match the left side of <code>--lora-paths</code>. If you launched with <code>qwen35b_lora=...</code>, request <code>model=qwen3.5-kt-ft:qwen35b_lora</code>, not <code>:lora0</code>.</p>
 <h3 id="no-visible-adapter-effect"><a class="header" href="#no-visible-adapter-effect">No visible adapter effect</a></h3>
-<p>Make sure you are serving the intended merged adapter directory. For example, use the Neko adapter at <code>..._nekoqa_eod_240_sglang</code>, not a generic sanity adapter such as <code>..._Moe_sglang</code>.</p>
+<p>Make sure you are serving the converted merged adapter directory produced by the converter, not the raw KT SFT output directory or a different test adapter.</p>
 <h3 id="connection-refused"><a class="header" href="#connection-refused"><code>connection refused</code></a></h3>
 <p>Check that the server is listening on the port you curl, and remember the example above binds to <code>127.0.0.1</code>, not <code>0.0.0.0</code>.</p>
 <h3 id="server-resolves-upstream-sglang-instead-of-this-checkout"><a class="header" href="#server-resolves-upstream-sglang-instead-of-this-checkout">Server resolves upstream SGLang instead of this checkout</a></h3>
@@ -1500,8 +1507,8 @@ PY
 </code></pre>
 <p>The path should come from this repository’s <code>third_party/sglang</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="kt-ft-微调推理闭环"><a class="header" href="#kt-ft-微调推理闭环">KT-FT 微调推理闭环</a></h1>
-<p>最后更新：2026-06-01</p>
+<h1 id="qwen35-moe-kt-lora-的-sglang-kt-serving"><a class="header" href="#qwen35-moe-kt-lora-的-sglang-kt-serving">Qwen3.5 MoE KT LoRA 的 SGLang-KT Serving</a></h1>
+<p>最后更新：2026-06-23</p>
 <p>本文档描述当前 Qwen3.5 MoE 的 KT-FT 闭环：用 KT SFT 完成微调，转换一次输出，再通过 SGLang 用单个 merged adapter path 把微调结果服务化。</p>
 <pre><code class="language-text">KT SFT 原始输出
   -&gt; convert_kt_to_sglang_adapter.py
@@ -1515,9 +1522,11 @@ PY
 <p>当前已验证路径：</p>
 <ul>
 <li>基座模型：Qwen3.5 MoE，例如 <code>Qwen3.5-35B-A3B</code></li>
+<li>KTransformers 版本：v0.6.3 或更新版本</li>
 <li>KT expert 权重：AMX/BF16 SFT 兼容的 KT CPU expert 路径</li>
 <li>用户侧 serving 输入：一个 converted merged adapter 目录</li>
 <li>Runtime 内部仍会 split：expert LoRA 走 KT CPU expert path，non-expert LoRA 走 SGLang LoRA manager，但这一步对用户不可见</li>
+<li>该工作流面向 KT MoE expert LoRA 产物；普通 dense 模型的标准 PEFT LoRA 通常不需要使用此转换器（converter）。</li>
 </ul>
 <h2 id="2-各阶段产物"><a class="header" href="#2-各阶段产物">2. 各阶段产物</a></h2>
 <h3 id="原始-kt-sft-输出"><a class="header" href="#原始-kt-sft-输出">原始 KT SFT 输出</a></h3>
@@ -1544,12 +1553,13 @@ PY
 </code></pre>
 <p>示例：</p>
 <pre><code class="language-bash">python kt-kernel/scripts/convert_kt_to_sglang_adapter.py \
-  saves/KT_FT_qwen35B_Moe_nekoqa_eod_240 \
-  saves/KT_FT_qwen35B_Moe_nekoqa_eod_240_sglang \
+  saves/KT_FT_qwen35B_Moe_custom \
+  saves/KT_FT_qwen35B_Moe_custom_sglang \
   --base-model-name-or-path /mnt/data3/models/Qwen3.5-35B-A3B \
   --overwrite
 </code></pre>
 <p>converter 会读取 <code>fused_expert_lora.safetensors</code> 和已有的 non-expert <code>adapter_model.safetensors</code>，写出一个 merged adapter 目录。</p>
+<p>如果原始 KT SFT 输出目录没有包含带 <code>lora_alpha</code> 的 <code>adapter_config.json</code>，需要显式传入 <code>--lora-alpha &lt;value&gt;</code>。converter 不会把 LoRA scaling 折进 tensor；运行时 scaling 仍然是 <code>lora_alpha / r</code>。</p>
 <p>如需调试，也可以额外输出 split 目录：</p>
 <pre><code class="language-bash">python kt-kernel/scripts/convert_kt_to_sglang_adapter.py \
   &lt;KT_SFT_OUTPUT_DIR&gt; \
@@ -1590,7 +1600,7 @@ python -m sglang.launch_server \
   --disable-custom-all-reduce \
   --enable-lora \
   --lora-backend triton \
-  --lora-paths qwen35b_neko=/path/to/KT_FT_qwen35B_Moe_nekoqa_eod_240_sglang \
+  --lora-paths qwen35b_lora=/path/to/KT_FT_qwen35B_Moe_custom_sglang \
   --log-level info
 </code></pre>
 <p>要点：</p>
@@ -1606,27 +1616,29 @@ python -m sglang.launch_server \
 <li><code>--kt-num-gpu-experts 0</code></li>
 <li>不启用 <code>--kt-enable-dynamic-expert-update</code></li>
 <li>不使用 <code>--kt-gpu-prefill-token-threshold</code></li>
+<li><code>--max-running-requests</code> 必须至少为 2</li>
 <li>使用 AMX/BF16 SFT 兼容 KT method，例如 <code>AMXINT4</code>、<code>AMXINT8</code>、<code>AMXBF16</code>、<code>BF16</code></li>
 </ul>
 <h2 id="5-请求语义"><a class="header" href="#5-请求语义">5. 请求语义</a></h2>
 <p>OpenAI-compatible 请求里的 <code>model</code> 字段用 name，不用 path。</p>
 <pre><code class="language-text">--served-model-name qwen3.5-kt-ft
---lora-paths qwen35b_neko=/path/to/merged_adapter
+--lora-paths qwen35b_lora=/path/to/merged_adapter
 </code></pre>
 <p>当前 single-adapter 实现的请求语义：</p>
 <pre><code class="language-text">model=qwen3.5-kt-ft
 =&gt; base + KT expert LoRA
 
-model=qwen3.5-kt-ft:qwen35b_neko
+model=qwen3.5-kt-ft:qwen35b_lora
 =&gt; base + KT expert LoRA + SGLang non-expert LoRA
 </code></pre>
 <p>冒号后的 adapter 名必须和 <code>--lora-paths</code> 左侧注册名一致。</p>
+<p>如果需要 true base-only 对照，请单独启动一个不带 <code>--lora-paths</code> 的服务。</p>
 <h2 id="6-smoke-test-1"><a class="header" href="#6-smoke-test-1">6. Smoke Test</a></h2>
 <pre><code class="language-bash">curl -sS http://127.0.0.1:30006/v1/chat/completions \
   -H 'Content-Type: application/json' \
   -d '{
-    "model": "qwen3.5-kt-ft:qwen35b_neko",
-    "messages": [{"role": "user", "content": "我回来了，你在干嘛？"}],
+    "model": "qwen3.5-kt-ft:qwen35b_lora",
+    "messages": [{"role": "user", "content": "用一句话解释什么是 LoRA。"}],
     "temperature": 0.7,
     "max_tokens": 160,
     "chat_template_kwargs": {"enable_thinking": false}
@@ -1646,9 +1658,9 @@ Using triton as backend of LoRA kernels.
 <p>这不是推荐的用户路径。正常用户只需要通过 <code>--lora-paths</code> 传一个 merged adapter 目录。</p>
 <h2 id="8-troubleshooting-1"><a class="header" href="#8-troubleshooting-1">8. Troubleshooting</a></h2>
 <h3 id="got-lora-adapter-that-has-never-been-loaded-lora0-1"><a class="header" href="#got-lora-adapter-that-has-never-been-loaded-lora0-1"><code>Got LoRA adapter that has never been loaded: lora0</code></a></h3>
-<p>请求里的 adapter 名必须和 <code>--lora-paths</code> 左侧一致。如果启动时写的是 <code>qwen35b_neko=...</code>，请求应使用 <code>model=qwen3.5-kt-ft:qwen35b_neko</code>，而不是 <code>:lora0</code>。</p>
+<p>请求里的 adapter 名必须和 <code>--lora-paths</code> 左侧一致。如果启动时写的是 <code>qwen35b_lora=...</code>，请求应使用 <code>model=qwen3.5-kt-ft:qwen35b_lora</code>，而不是 <code>:lora0</code>。</p>
 <h3 id="看不出-adapter-效果"><a class="header" href="#看不出-adapter-效果">看不出 adapter 效果</a></h3>
-<p>确认 serving 用的是目标 merged adapter。例如 Neko 风格应使用 <code>..._nekoqa_eod_240_sglang</code>，而不是通用 sanity adapter <code>..._Moe_sglang</code>。</p>
+<p>确认 serving 使用的是 converter 生成的 merged adapter 目录，而不是原始 KT SFT 输出目录或其他测试 adapter。</p>
 <h3 id="connection-refused-1"><a class="header" href="#connection-refused-1"><code>connection refused</code></a></h3>
 <p>确认 server 监听的端口与 curl 一致；上面的示例绑定的是 <code>127.0.0.1</code>，不是 <code>0.0.0.0</code>。</p>
 <h3 id="server-解析到了上游-sglang而不是当前-checkout"><a class="header" href="#server-解析到了上游-sglang而不是当前-checkout">Server 解析到了上游 SGLang，而不是当前 checkout</a></h3>
@@ -1992,7 +2004,7 @@ DeepseekV2-Chat got 60 layers, if we got 2 GPUs, we can allocate 30 layers to ea
 <p>Recent open-source LLMs—from DeepSeek-V3/R1 to Qwen-MoE and Kimi-K2—have surged in performance and scale. Yet due to <strong>compute and memory constraints</strong>, it is difficult for typical researchers to fine-tune trillion-parameter-class models. We therefore integrate <strong>KTransformers</strong> with <strong>LLaMA-Factory</strong> so that, with <strong>2–4 RTX 4090 GPUs</strong> and sufficient CPU memory, one can fine-tune ultra-large Mixture-of-Experts (MoE) models such as DeepSeek-671B.</p>
 <p>This architecture bridges resource gaps, enabling <strong>local fine-tuning of ultra-large models</strong>, while also supporting <strong>efficient scenario customization</strong> at 14B/30B scales. We validate on stylized dialogue, Westernized translation tone, and medical Q&amp;A, achieving rapid adaptation within hours.</p>
 <p>Architecturally, LLaMA-Factory orchestrates data/config/training, LoRA insertion, and inference; KTransformers is a pluggable, high-performance operator backend that takes over Attention and MoE under the same training code, enabling <strong>GPU+CPU heterogeneity</strong> to accelerate training and reduce GPU memory.</p>
-<p><img src="assets/image-20251011010558909.png" alt="image-20251011010558909"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20251011010558909.png" alt="image-20251011010558909"><span class="img-wrapper"><img src="assets/image-20251011010558909.png" alt="image-20251011010558909"></span></label></p>
 <p>We evaluated LoRA fine-tuning with HuggingFace default, Unsloth, and KTransformers backends (same settings and data). <strong>KTransformers</strong> is currently the only solution feasible on <strong>2–4×24GB 4090s</strong> for <strong>671B-scale MoE</strong>, and also shows higher throughput and lower GPU memory for 14B MoEs.</p>
 <div class="table-wrapper">
 <table>
@@ -2009,7 +2021,7 @@ DeepseekV2-Chat got 60 layers, if we got 2 GPUs, we can allocate 30 layers to ea
 </div>
 <p>† The <strong>1400 GB</strong> is the <strong>theoretical</strong> FP16 full-resident footprint (not runnable). <strong>70 GB</strong> is the <strong>measured peak</strong> with KT (Attention on GPU + layered MoE offload).</p>
 <p>From the table above, it can be seen that for the 14B model, the KTransformers backend achieves approximately 75% higher throughput than the default HuggingFace solution, while using only about one-fifth of the GPU memory. For the 671B model, both HuggingFace and Unsloth fail to run on a single 4090 GPU, whereas KTransformers is able to perform LoRA fine-tuning at 40 tokens/s, keeping the GPU memory usage within 70 GB.</p>
-<p><img src="assets/image-compare_model.png" alt="按照模型划分的对比图_02"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-compare_model.png" alt="按照模型划分的对比图_02"><span class="img-wrapper"><img src="assets/image-compare_model.png" alt="按照模型划分的对比图_02"></span></label></p>
 <h2 id="overall-view-of-the-kt-fine-tuning-framework"><a class="header" href="#overall-view-of-the-kt-fine-tuning-framework">Overall View of the KT Fine-Tuning Framework</a></h2>
 <p>We detail how KTransformers takes over core operators in LLaMA-Factory’s fine-tuning framework to optimize Attention and MoE.</p>
 <p>DeepSeek-V3/V2 MoE models comprise a small-parameter dense Attention part and a large-parameter sparse MoE part. For illustration, consider layer 2 of DeepSeek-V2-Lite-Chat (from which each layer includes both Attention and MoE). Attention compute and KV cache mainly reside on the GPU; the heavyweight MoE part is primarily executed on the CPU. We first cover <strong>Attention replacement and inheritance</strong>, then <strong>MoE encapsulation and backend interfacing</strong>, and finally <strong>multi-GPU placement</strong>.</p>
@@ -2019,9 +2031,9 @@ DeepseekV2-Chat got 60 layers, if we got 2 GPUs, we can allocate 30 layers to ea
 <li><strong>Inheritance:</strong> <code>KTransformersLinearLora</code> retains KT’s high-performance paths (<code>prefill_linear</code>/<code>generate_linear</code>) while accepting LoRA parameters (<code>lora_A/lora_B</code>).</li>
 <li><strong>Replacement:</strong> During preparation, we replace original <code>KTransformersLinear</code> layers (Q/K/V/O) with <code>KTransformersLinearLora</code>, preserving KT optimizations while enabling LoRA trainability.</li>
 </ul>
-<p><img src="assets/image-20251016182810716.png" alt="image-20251016182810716"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20251016182810716.png" alt="image-20251016182810716"><span class="img-wrapper"><img src="assets/image-20251016182810716.png" alt="image-20251016182810716"></span></label></p>
 <p>After replacement, LoRA is inserted at Q/K/V/O linear transforms (left), and <code>KTransformersLinearLora</code> contains both KT fast paths and LoRA matrices (right).</p>
-<p><img src="assets/image-20251016182920722.png" alt="image-20251016182920722"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20251016182920722.png" alt="image-20251016182920722"><span class="img-wrapper"><img src="assets/image-20251016182920722.png" alt="image-20251016182920722"></span></label></p>
 <h3 id="moe-operator-encapsulation--backward"><a class="header" href="#moe-operator-encapsulation--backward">MoE (operator encapsulation + backward)</a></h3>
 <h4 id="encapsulation"><a class="header" href="#encapsulation">Encapsulation</a></h4>
 <p>Given large parameters and sparse compute, we encapsulate the expert computation as a <strong>differentiable black-box operator</strong>—transparent upstream, replaceable downstream.</p>
@@ -2029,7 +2041,7 @@ DeepseekV2-Chat got 60 layers, if we got 2 GPUs, we can allocate 30 layers to ea
 <li><strong>Upstream (PyTorch graph):</strong> we register a custom Autograd Function so the MoE layer appears as <strong>a single node</strong>. In the left figure (red box), only <code>KSFTExpertsCPU</code> is visible; on the right, the unencapsulated graph expands routing, dispatch, and FFN experts. Encapsulation makes the MoE layer behave like a standard <code>nn.Module</code> with gradients.</li>
 <li><strong>Downstream (backend):</strong> inside the Autograd Function, pybind11 calls C++ extensions for forward/backward. Multiple <strong>pluggable backends</strong> exist (AMX BF16/INT8; <strong>llamafile</strong>). The backend can be switched via YAML (e.g., <code>"backend": "AMXBF16"</code> vs. <code>"llamafile"</code>).</li>
 </ul>
-<p><img src="assets/image-20250801174623919.png" alt="image-20250801174623919"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20250801174623919.png" alt="image-20250801174623919"><span class="img-wrapper"><img src="assets/image-20250801174623919.png" alt="image-20250801174623919"></span></label></p>
 <h4 id="backward-cpu"><a class="header" href="#backward-cpu">Backward (CPU)</a></h4>
 <p>MoE backward frequently needs the transposed weights $W^\top$. To avoid repeated runtime transposes, we <strong>precompute/cache</strong> $W^\top$ at load time (blue box). We also <strong>cache necessary intermediate activations</strong> (e.g., expert projections, red box) to reuse in backward and reduce recomputation. We provide backward implementations for <strong>llamafile</strong> and <strong>AMX (INT8/BF16)</strong>, with NUMA-aware optimizations.</p>
 <img src="assets/image-20251016182942726.png" alt="image-20251016182942726" style="zoom:33%;" />
@@ -2048,7 +2060,7 @@ DeepseekV2-Chat got 60 layers, if we got 2 GPUs, we can allocate 30 layers to ea
 <h3 id="results"><a class="header" href="#results">Results</a></h3>
 <h4 id="stylized-dialogue-catgirl-tone-1"><a class="header" href="#stylized-dialogue-catgirl-tone-1">Stylized Dialogue (CatGirl tone)</a></h4>
 <p>Dataset: <a href="https://zhuanlan.zhihu.com/p/1934983798233231689">NekoQA-10K</a>. The fine-tuned model consistently exhibits the target style (red boxes) versus neutral/rational base (blue). This shows <strong>KT-LoRA injects style features</strong> into the generation distribution with low GPU cost.</p>
-<p><img src="assets/image-20251016175848143.png" alt="image-20251016175848143"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/image-20251016175848143.png" alt="image-20251016175848143"><span class="img-wrapper"><img src="assets/image-20251016175848143.png" alt="image-20251016175848143"></span></label></p>
 <h4 id="translational-style-benchmark-generative"><a class="header" href="#translational-style-benchmark-generative">Translational-Style benchmark (generative)</a></h4>
 <p>Dataset: <a href="https://github.com/Benson114/Translational-Style-ChatLLM">Translational-Style-ChatLLM</a>. Metrics: BLEU-1/2/3/4, ROUGE-1/2/L.</p>
 <div class="table-wrapper">
@@ -2512,7 +2524,7 @@ curl http://localhost:30000/v1/chat/completions \
 <li>Reduce <code>--kt-num-gpu-experts</code>, <code>--chunked-prefill-size</code>, <code>--max-total-tokens</code></li>
 <li>Lower <code>--mem-fraction-static</code></li>
 </ul>
-<p>For more questions, see <a href="#see-the-issue-faq-page">FAQ</a>.</p>
+<p>For more questions, see <a href="#frequently-asked-questions">FAQ</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="在-avx2-cpu-上使用-ktransformers"><a class="header" href="#在-avx2-cpu-上使用-ktransformers">在 AVX2 CPU 上使用 KTransformers</a></h1>
 <p>本教程介绍如何在仅支持 AVX2 的机器上运行 KTransformers（无需 AVX512 或 AMX）。</p>
@@ -2707,9 +2719,17 @@ curl http://localhost:30000/v1/chat/completions \
 <li>减小 <code>--kt-num-gpu-experts</code>、<code>--chunked-prefill-size</code>、<code>--max-total-tokens</code></li>
 <li>降低 <code>--mem-fraction-static</code></li>
 </ul>
-<p>更多问题参见 <a href="#see-the-issue-faq-page">FAQ</a>。</p>
-<div style="break-before: page; page-break-before: always;"></div><!-- omit in toc -->
-<h1 id="see-the-issue-faq-page"><a class="header" href="#see-the-issue-faq-page">see the issue <a href="https://github.com/kvcache-ai/ktransformers/issues/1608">FAQ page</a></a></h1>
+<p>更多问题参见 <a href="#frequently-asked-questions">FAQ</a>。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="frequently-asked-questions"><a class="header" href="#frequently-asked-questions">Frequently Asked Questions</a></h1>
+<h2 id="1-sglang-using-default-moe-kernel-config-warning-at-startup"><a class="header" href="#1-sglang-using-default-moe-kernel-config-warning-at-startup">1. SGLang “Using default MoE kernel config” warning at startup</a></h2>
+<p>When using kt-kernel with SGLang, you may see a warning like:</p>
+<pre><code>[2026-05-15 20:31:38] Using default MoE kernel config. Performance might be sub-optimal!
+Config file not found at .../fused_moe_triton/configs/...
+</code></pre>
+<p>This warning is <strong>expected and can be safely ignored</strong>. kt-kernel replaces SGLang’s built-in MoE implementation with its own CPU/GPU hybrid dispatch, so SGLang’s fused-MoE Triton kernel configuration is never used. The warning is emitted by SGLang before kt-kernel takes over MoE execution and has no impact on performance or correctness.</p>
+<h2 id="2-where-can-i-find-more-help"><a class="header" href="#2-where-can-i-find-more-help">2. Where can I find more help?</a></h2>
+<p>Check the <a href="https://github.com/kvcache-ai/ktransformers/issues">existing issues</a> or open a <a href="https://github.com/kvcache-ai/ktransformers/issues/new">new one</a>.</p>
 
                     </main>
 
@@ -2752,7 +2772,7 @@ curl http://localhost:30000/v1/chat/completions \
 
         <script src="clipboard-1626706a.min.js"></script>
         <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="book-609e4cb8.js"></script>
 
         <!-- Custom JS scripts -->
 
